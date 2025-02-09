@@ -29,6 +29,6 @@ echo "tupjdjtn" | caesar rotate -f
 ```
 Usage of ./bin/caesar_linux_amd64:
   -f, --full         Performs a full shift
-  -s, --shift ints   Shifts by a single value or a range in beetween 1 and 26 (default [1])
+  -s, --shift ints   Shifts by a single value or a range in beetween -12 and 13 (default [1])
   -v, --version      Show version number
 ```

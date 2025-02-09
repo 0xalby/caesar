@@ -14,7 +14,7 @@ var Release string
 
 func main() {
 	// Setting flags
-	shiftFlag := pflag.IntSliceP("shift", "s", []int{1}, "Shifts by a single value or a range in beetween 1 and 26")
+	shiftFlag := pflag.IntSliceP("shift", "s", []int{1}, "Shifts by a single value or a range in beetween -12 and 13")
 	fullFlag := pflag.BoolP("full", "f", false, "Performs a full shift")
 	versionFlag := pflag.BoolP("version", "v", false, "Show version number")
 	pflag.Parse()
@@ -59,7 +59,7 @@ func main() {
 			fmt.Println("failed to read from stdin", err)
 			os.Exit(1)
 		}
-		input = append(input, "\n"+string(content))
+		input = append(input, string(content))
 	}
 	// Concatenate inputs
 	data := strings.Join(input, "")
@@ -69,7 +69,7 @@ func main() {
 	}
 	// Full shift
 	if *fullFlag {
-		for i := 1; i < 27; i++ {
+		for i := -12; i < 13; i++ {
 			result := Cipher(data, i)
 			fmt.Print(result)
 		}
@@ -80,7 +80,7 @@ func main() {
 		return
 	} else if len(*shiftFlag) == 2 {
 		shft := *shiftFlag
-		if shft[0] < 1 || shft[1] > 26 {
+		if shft[0] < -12 || shft[1] > 13 {
 			fmt.Print("a shift range is between 1 and 26 which is the number of characters in the alphabet")
 			return
 		}
